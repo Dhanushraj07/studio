@@ -2,7 +2,7 @@ import type { SiteConfig, AboutData, Experience, Project, Skill, Achievement } f
 
 export const siteConfig: SiteConfig = {
   name: "Dhanush D",
-  tagline: "Full Stack Developer | Python, Java, SQL, React, Node.js",
+  tagline: "I'm a passionate Full Stack Developer crafting efficient and user-friendly web applications, turning complex problems into elegant digital solutions.",
   contact: {
     email: "dhanushdharmalingam123@gmail.com",
     phone: "+91 6369471916",

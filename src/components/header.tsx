@@ -26,23 +26,26 @@ export function Header() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
-        isScrolled ? 'bg-background/80 backdrop-blur-sm border-b' : 'bg-background'
+        isScrolled ? 'bg-background/80 backdrop-blur-lg border-b border-primary/20' : 'bg-transparent'
       )}
     >
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-2" onClick={closeMenu}>
-          <Code className="h-6 w-6 text-primary" />
-          <span className="font-bold font-headline">{siteConfig.name}</span>
+          <div className="bg-primary p-2 rounded-full">
+            <Code className="h-6 w-6 text-primary-foreground" />
+          </div>
+          <span className="text-xl font-bold font-headline">{siteConfig.name}</span>
         </Link>
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-1">
           {siteConfig.navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </Link>
+            <Button key={link.href} variant="ghost" asChild>
+              <Link
+                href={link.href}
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            </Button>
           ))}
         </nav>
         <div className="flex items-center gap-2">
@@ -54,18 +57,18 @@ export function Header() {
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden border-t">
+        <div className="md:hidden border-t bg-background/95 backdrop-blur-lg">
           <nav className="container flex flex-col gap-4 py-4">
             {siteConfig.navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-muted-foreground transition-colors hover:text-foreground"
+                className="text-muted-foreground transition-colors hover:text-foreground text-lg py-2"
                 onClick={closeMenu}
               >
                 {link.label}
